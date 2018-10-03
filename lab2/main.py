@@ -10,6 +10,7 @@ def insertion_sort(list_to_sort):
 
 
 if __name__ == "__main__":
+    sum = 0
 
     file = open('discnt_in')
     lines = [line.rstrip('\n') for line in file]
@@ -20,17 +21,16 @@ if __name__ == "__main__":
     discount = int(lines[1])
     discount_percent = int(lines[1])
     insertion_sort(all_prices)
-    for index in range(0, len(all_prices)):
-        print(all_prices[index])
+
 
     number = len(all_prices)
     number_of_cey = int(number / 3)
     for index in range(0, number_of_cey):
-        all_prices[index] = all_prices[index] - all_prices[index]*(discount*0.01)
-
-    print(discount)
-
+        all_prices[index] = all_prices[index] - all_prices[index] * (discount * 0.01)
 
     for index in range(0, len(all_prices)):
-        print(all_prices[index])
-    print('------')
+        sum = sum + all_prices[index]
+
+    my_file = open("discnt_out", "w")
+    my_file.write(str(sum))
+    my_file.close()
