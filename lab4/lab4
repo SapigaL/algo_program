@@ -1,0 +1,35 @@
+if __name__ == "__main__":
+    friends = []
+    graph = {}
+    max = 0
+    i = -1
+    graphh = {}
+
+    file = open('discnt_in')
+    lines = [line.rstrip('\n') for line in file]
+    for friend in lines[0].split(" "):
+        friends.append(str(friend))
+        i = i + 1
+        graph[i] = []
+        for index, letter_friend in enumerate(friend):
+            if letter_friend == 'Y':
+                graph[int(i)].append(index)
+
+    for index, friends in graph.items():
+        graphh[index] = []
+        for friend in friends:
+            for e in graph.get(friend):
+                if index != e:
+                    graphh[int(index)].append(e)
+
+
+    for index in graphh:
+        if int(len((graphh.get(index) + graph.get(index))))>max:
+            max=len(set(graphh.get(index) + graph.get(index)))
+
+
+
+
+    my_file = open("discnt_out", "w")
+    my_file.write(str(max))
+    my_file.close()
