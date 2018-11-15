@@ -18,9 +18,9 @@ if __name__ == "__main__":
     for index, friends in graph.items():
         graphh[index] = []
         for friend in friends:
-            for e in graph.get(friend):
-                if index != e:
-                    graphh[int(index)].append(e)
+            for friend_number in graph.get(friend):
+                if index != friend_number:
+                    graphh[int(index)].append(friend_number)
 
 
     for index in graphh:
